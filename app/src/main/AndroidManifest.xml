@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DicodingCourse">
         <activity
+            android:name=".RecyclerViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".ViewgroupActivity"
             android:exported="true" />
         <activity

@@ -23,4 +23,13 @@
     <string name="dummy_value">Rp. 1.500.000</string>
     <string name="dummy_photos">5 photos</string>
     <string name="view_group">View Group</string>
+    <string name="recycler_view">recycler_view</string>
+    <string name="browser">Portofolio saya</string>
+    <string name="heroes_name">Nama Pahlawan</string>
+    <string name="detail">Detail</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
+    <string name="cardview">CardView</string>
+    <string name="favorite">Favorite</string>
+    <string name="share">Share</string>
 </resources>

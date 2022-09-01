@@ -46,8 +46,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btnDialNumber : Button = findViewById(R.id.btn_dial_number)
         btnDialNumber.setOnClickListener(this)
 
+        val btnBrowser : Button = findViewById(R.id.btn_browser)
+        btnBrowser.setOnClickListener(this)
+
         val btnViewGroup : Button = findViewById(R.id.btn_view_group)
         btnViewGroup.setOnClickListener(this)
+
+        val btnRecyclerView : Button = findViewById(R.id.btn_recycler_view)
+        btnRecyclerView.setOnClickListener(this)
 
     }
 
@@ -97,6 +103,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_view_group -> {
                 val viewGroupIntent = Intent(this@MainActivity, ViewgroupActivity::class.java)
                 startActivity(viewGroupIntent)
+            }
+
+            R.id.btn_browser -> {
+                val url = "https://hudaputrasantosa.github.io/"
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("$url"))
+                startActivity(browserIntent)
+
+            }
+            R.id.btn_recycler_view -> {
+                val recyclerViewIntent = Intent(this@MainActivity, RecyclerViewActivity::class.java)
+                startActivity(recyclerViewIntent)
             }
             }
         }
