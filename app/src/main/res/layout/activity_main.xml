@@ -68,4 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/dial_number" />
+    <Button
+        android:id="@+id/btn_view_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/view_group" />
 </LinearLayout>

@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btnDialNumber : Button = findViewById(R.id.btn_dial_number)
         btnDialNumber.setOnClickListener(this)
 
+        val btnViewGroup : Button = findViewById(R.id.btn_view_group)
+        btnViewGroup.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
@@ -90,6 +93,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val numberPhone = "085156890287"
                 val dialNumberIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$numberPhone"))
                 startActivity(dialNumberIntent)
+            }
+            R.id.btn_view_group -> {
+                val viewGroupIntent = Intent(this@MainActivity, ViewgroupActivity::class.java)
+                startActivity(viewGroupIntent)
             }
             }
         }
