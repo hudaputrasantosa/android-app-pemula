@@ -4,16 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerViewActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Hero> = arrayListOf()
+    private var title = "Mode List"
+
+    private fun setActionBarTitle(title: String) {
+        supportActionBar?.title = title
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view)
+        setActionBarTitle(title)
 
         rvHeroes = findViewById(R.id.rv_heroes)
         rvHeroes.setHasFixedSize(true)
@@ -32,13 +40,23 @@ class RecyclerViewActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     private fun setMode(selectedMode: Int) {
         when (selectedMode) {
             R.id.action_list -> {
+                title = "Mode List"
+                setActionBarTitle(title)
+                showRecyclerList()
             }
             R.id.action_grid -> {
+                title = "Mode Grid"
+                setActionBarTitle(title)
+                showRecyclerGrid()
             }
             R.id.action_cardview -> {
+                title = "Mode CardView"
+                setActionBarTitle(title)
+                showRecyclerCardView()
             }
         }
     }
@@ -48,5 +66,33 @@ class RecyclerViewActivity : AppCompatActivity() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
+
+        listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
+    }
+
+    private fun showRecyclerGrid() {
+        rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        val gridHeroAdapter = GridHeroAdapter(list)
+        rvHeroes.adapter = gridHeroAdapter
+
+        gridHeroAdapter.setOnItemClickCallback(object : GridHeroAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
+    }
+
+    private fun showRecyclerCardView() {
+        rvHeroes.layoutManager = LinearLayoutManager(this)
+        val cardViewHeroAdapter = CardViewHeroAdapter(list)
+        rvHeroes.adapter = cardViewHeroAdapter
+    }
+
+    private fun showSelectedHero(hero: Hero) {
+        Toast.makeText(this, "Kamu memilih " + hero.name, Toast.LENGTH_SHORT).show()
     }
 }
