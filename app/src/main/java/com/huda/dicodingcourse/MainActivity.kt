@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btnRecyclerView : Button = findViewById(R.id.btn_recycler_view)
         btnRecyclerView.setOnClickListener(this)
 
+        val btnFragmentMainActivity : Button = findViewById(R.id.btn_fragmentmain_view)
+        btnFragmentMainActivity.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
@@ -114,6 +117,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_recycler_view -> {
                 val recyclerViewIntent = Intent(this@MainActivity, RecyclerViewActivity::class.java)
                 startActivity(recyclerViewIntent)
+            }
+
+            R.id.btn_fragmentmain_view -> {
+                startActivity(Intent(this@MainActivity, FragmentMainActivity::class.java))
             }
             }
         }
